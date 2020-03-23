@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Greek SMS Covid19</string>
+    <string name="title_activity_settings">Ρυθμίσεις</string>
+    <string name="title_activity_info">Πληροφορίες</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="surname">Ονοματεπώνυμο</string>
+    <string name="address">Διεύθυνση κατοικίας</string>
+    <string name="userData">Info: Τα στοιχεία σας είναι αποθηκευμένα μόνο στη συσκευή σας. Δεν αποθηκεύονται σε κανένα server.</string>
+    <string name="save">Αποθήκευση</string>
+    <string name="sendSMS">Αποστολή</string>
+    <string name="moving">Μετακίνηση τύπου Β</string>
+    <string name="chooseReason">Διαλέξτε λόγο μετακίνησης</string>
+    <string name="moreInfo">Για περισσότερες πληροφορίες μπορείτε να επισκεφτείτε την σελίδα της Ελληνικής Κυβέρνησης κάνοντας click εδώ.</string>
+    <string name="returnBack">Επιστροφή</string>
+
+    <!-- Options -->
+    <string name="medical">1. Φαρμακείο ή επίσκεψη σε γιατρό</string>
+    <string name="supplies">2. Προμήθεια αγαθών πρώτης ανάγκης (super market, φούρνος κ.τ.λ)</string>
+    <string name="bank">3. Τράπεζα</string>
+    <string name="aid">4. Παροχή βοήθειας σε ανθρώπους που έχουν ανάγκη</string>
+    <string name="ritual">5. Τελετή (κηδεία, γάμος, βάφτιση)</string>
+    <string name="exercise">6. Σωματική άσκηση (έως 2 άτομα) ή κίνηση με κατοικίδιο ζώο</string>
+
+    <!-- Info -->
+    <string name="developer">Μιχαήλ-Αλέξανδρος Σαββανής michalsavv@gmail.com</string>
+    <string name="info">Αυτή η εφαρμογή αναπτύχθηκε με στόχο την αυτοματοποίηση αποστολής SMS για
+        λόγους μετακίνησης προς το Ελληνικό κράτος κατά την διάρκεια της απαγόρευσης κυκλοφορίας λόγο του ιού Covid 19 (SARS-Cov-2)
+        στις 23/03/2020.
+    </string>
+
+</resources>
