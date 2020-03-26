@@ -5,108 +5,122 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="?attr/primary"
     tools:context="com.example.govsmscovid19.MainActivity">
 
 
-    <EditText
-        android:id="@+id/nameInput"
-        android:layout_width="309dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="51dp"
-        android:ems="10"
-        android:hint="@string/surname"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/addressInput"
-        android:layout_width="309dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="51dp"
-        android:ems="10"
-        android:hint="@string/address"
-        android:inputType="textPostalAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameInput" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="360dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="51dp" />
-
-    <TextView
-        android:id="@+id/disclaimerText"
-        android:layout_width="307dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="53dp"
-        android:foregroundTint="#FFFFFF"
-        android:text="@string/userData"
-        android:textAlignment="center"
-        android:textColor="#3F9156"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveButton" />
-
-    <Button
-        android:id="@+id/saveButton"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="158dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="59dp"
-        android:layout_marginEnd="127dp"
-        android:background="@drawable/btn_rounded"
-        android:text="@string/save"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressInput" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageButton
-        android:id="@+id/returnBtn"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="#00FB1212"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_angle_left" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/formaRedirect"
-        android:layout_width="307dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="52dp"
-        android:text="@string/moreInfo"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/disclaimerText" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/secondaryToolbar2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/primaryDark"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:titleTextColor="?attr/textcolor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationIcon="@drawable/ic_angle_left" />
+
+            <EditText
+                android:id="@+id/nameInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="76dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/input_background"
+                android:ems="10"
+                android:hint="@string/surname"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:textColor="?attr/textcolor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/secondaryToolbar2" />
+
+            <EditText
+                android:id="@+id/addressInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/input_background"
+                android:ems="10"
+                android:hint="@string/address"
+                android:inputType="textPostalAddress"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:textColor="?attr/textcolor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameInput" />
+
+            <Button
+                android:id="@+id/saveButton"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="59dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/btn_rounded"
+                android:text="@string/save"
+                android:textColor="@color/colorLight"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addressInput" />
+
+            <TextView
+                android:id="@+id/disclaimerText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="76dp"
+                android:layout_marginEnd="40dp"
+                android:foregroundTint="#FFFFFF"
+                android:text="@string/userData"
+                android:textAlignment="center"
+                android:textColor="?attr/textcolor"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/saveButton" />
+
+            <Switch
+                android:id="@+id/themeSwitch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/nightMode"
+                android:textColor="?attr/textcolor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/disclaimerText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

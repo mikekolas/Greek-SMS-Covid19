@@ -27,6 +27,7 @@
     <string name="chooseReason">Διαλέξτε λόγο μετακίνησης</string>
     <string name="moreInfo">Για περισσότερες πληροφορίες μπορείτε να επισκεφτείτε την σελίδα της Ελληνικής Κυβέρνησης κάνοντας click εδώ.</string>
     <string name="returnBack">Επιστροφή</string>
+    <string name="nightMode">Νυκτερινή λειτουργία</string>
 
     <!-- Options -->
     <string name="medical">1. Φαρμακείο ή επίσκεψη σε γιατρό</string>
@@ -40,7 +41,7 @@
     <string name="developer">Μιχαήλ-Αλέξανδρος Σαββανής michalsavv@gmail.com</string>
     <string name="info">Αυτή η εφαρμογή αναπτύχθηκε με στόχο την αυτοματοποίηση αποστολής SMS για
         λόγους μετακίνησης προς το Ελληνικό κράτος κατά την διάρκεια της απαγόρευσης κυκλοφορίας λόγο του ιού Covid 19 (SARS-Cov-2)
-        στις 23/03/2020.
+        στις 23/03/2020. Για περισσότερες πληροφορίες www.forma.gov.gr
     </string>
 
 </resources>

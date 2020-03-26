@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <!--  Light theme  -->
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#f9f8f8</color>
+
+    <color name="colorAccent">#3389FF</color>
     <color name="colorDisabled">#4A4848</color>
+
+    <!--  Dark theme  -->
+    <color name="colorSecondary">#3D4048</color>
+    <color name="colorSecondaryDark">#323542</color>
+    <color name="colorLight">#F9F8F8</color>
+
+    <!-- component color -->
+    <color name="green_200">#3389FF</color> <!--Color secondary-->
+
 </resources>

@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.telephony.SmsManager
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.RadioButton
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -28,25 +30,46 @@ class MainActivity : AppCompatActivity() {
         android.Manifest.permission.SEND_SMS,
         android.Manifest.permission.RECEIVE_SMS
     )
+    internal lateinit var sharedPref: SharedPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        sharedPref = SharedPref(this)
+        println(sharedPref.loadNightModeState())
+        if (sharedPref.loadNightModeState() == true) {
+            setTheme(R.style.DarkTheme)
+        } else setTheme(R.style.AppTheme)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        setSupportActionBar(toolbar)
+
         loadData()
-
-        settingsBtn.setOnClickListener {
-            val intent = Intent(this, SettingsActivity::class.java)
-            startActivity(intent)
-        }
-
-        infoBtn.setOnClickListener {
-            val intent = Intent(this, InfoActivity::class.java)
-            startActivity(intent)
-        }
 
         sendSMSbtn.setOnClickListener {
             setupPermissions()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+           R.id.infoButton -> {
+               val intent = Intent(this, InfoActivity::class.java)
+               startActivity(intent)
+               return true
+           }
+           R.id.settingsButton -> {
+               val intent = Intent(this, SettingsActivity::class.java)
+               startActivity(intent)
+               return true
+           }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun loadData() {
@@ -89,7 +112,7 @@ class MainActivity : AppCompatActivity() {
             val per = ContextCompat.checkSelfPermission(this, permission)
             if (per != PackageManager.PERMISSION_GRANTED)
             {
-                Log.i("DemoPERM", "Permission denied on $permission")
+                Log.i("DENIED", "Permission denied on $permission")
                 println(ActivityCompat.shouldShowRequestPermissionRationale(this, permission))
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
                     val builder = AlertDialog.Builder(this)
@@ -110,7 +133,6 @@ class MainActivity : AppCompatActivity() {
             } else {
                 //Run only if the user wants to send an sms
                 if (permission == permissions[0]) {
-//                    requestPermission(permission)
                     val id = radioGroup.checkedRadioButtonId
                     if (id != -1) {
                         disableButton()
