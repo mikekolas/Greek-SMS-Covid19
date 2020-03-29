@@ -29,11 +29,10 @@ class SMSReceiver : BroadcastReceiver() {
                 if (phoneNumber == GOV_NUMBER_TO_SEND) {
                     Toast.makeText(
                         context,
-                        "phoneNumber: $phoneNumber\nmessageText: $messageText",
+                        "Τηλέφωνο: $phoneNumber\nΜήνυμα: $messageText",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
             }
         }
     }

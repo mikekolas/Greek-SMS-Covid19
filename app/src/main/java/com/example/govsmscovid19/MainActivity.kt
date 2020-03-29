@@ -115,14 +115,14 @@ class MainActivity : AppCompatActivity() {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
                     val builder = AlertDialog.Builder(this)
                     if (permission == permissions[0]) {
-                        builder.setMessage("Xρειάζεται εξουσιοδότηση αποστολής SMS η εφαρμογή για την λειτουργία της.")
-                            .setTitle("Εξουσιοδότηση SMS")
+                        builder.setMessage(getString(R.string.permissionTitle, "αποστολής"))
+                               .setTitle(getString(R.string.permissionTitle))
                     } else if (permission == permissions[1]) {
-                        builder.setMessage("Xρειάζεται εξουσιοδότηση λήψης SMS η εφαρμογή για την λειτουργία της.")
-                            .setTitle("Εξουσιοδότηση SMS")
+                        builder.setMessage(getString(R.string.permissionTitle, "λήψης"))
+                               .setTitle(getString(R.string.permissionTitle))
                     }
 
-                    builder.setPositiveButton("Ok") { _, _ ->
+                    builder.setPositiveButton(getString(R.string.btnOK)) { _, _ ->
                     }
                     val dialog = builder.create()
                     dialog.show()
@@ -142,9 +142,9 @@ class MainActivity : AppCompatActivity() {
                             .sendTextMessage(GOV_NUMBER_TO_SEND, null, textToSend, null, null)
                     } else {
                         val builder = AlertDialog.Builder(this)
-                        builder.setMessage("Πρέπει να επιλέξετε πρώτα μία από τις επιλογές")
-                            .setTitle("Επιλογή μετακίνησης")
-                        builder.setPositiveButton("Ok") { _, _ -> }
+                        builder.setMessage(getString(R.string.noOptionSelectedMessage))
+                               .setTitle(getString(R.string.noOptionSelectedTitle))
+                        builder.setPositiveButton(getString(R.string.btnOK)) { _, _ -> }
                         val dialog = builder.create()
                         dialog.show()
                     }

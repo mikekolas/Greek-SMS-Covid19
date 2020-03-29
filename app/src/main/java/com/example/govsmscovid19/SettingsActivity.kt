@@ -40,10 +40,10 @@ class SettingsActivity : AppCompatActivity() {
                 val builder: AlertDialog.Builder? = this@SettingsActivity.let {
                     AlertDialog.Builder(it)
                 }
-                builder?.setMessage("Ξεχάσατε να βάλετε τα στοιχεία σας")
-                    ?.setNegativeButton("Κλείσιμο") { _, _ ->
-                        // User cancelled
-                    }
+                builder?.setMessage(getString(R.string.missingSettings))
+                       ?.setNegativeButton(getString(R.string.btnClose)) { _, _ ->
+                           // User cancelled
+                       }
                 val dialog: AlertDialog? = builder?.create()
                 dialog?.show()
             } else {

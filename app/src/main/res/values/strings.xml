@@ -10,6 +10,11 @@
     <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
     <string name="reply_title">Default reply action</string>
+    <string name="permissionTitle">Χρειάζεται εξουσιοδότηση %1$s SMS η εφαρμογή για την λειτουργία της.</string>
+    <string name="permissionMessage">Εξουσιοδότηση SMS</string>
+    <string name="noOptionSelectedTitle">Επιλογή μετακίνησης</string>
+    <string name="noOptionSelectedMessage">Πρέπει να επιλέξετε πρώτα μία από τις επιλογές</string>
+    <string name="btnOK">Ok</string>
 
     <!-- Sync Preferences -->
     <string name="sync_title">Sync email periodically</string>
@@ -28,6 +33,8 @@
     <string name="moreInfo">Για περισσότερες πληροφορίες μπορείτε να επισκεφτείτε την σελίδα της Ελληνικής Κυβέρνησης κάνοντας click εδώ.</string>
     <string name="returnBack">Επιστροφή</string>
     <string name="nightMode">Νυκτερινή λειτουργία</string>
+    <string name="missingSettings">Ξεχάσατε να βάλετε τα στοιχεία σας</string>
+    <string name="btnClose">Κλείσιμο</string>
 
     <!-- Options -->
     <string name="medical">1. Φαρμακείο ή επίσκεψη σε γιατρό</string>
