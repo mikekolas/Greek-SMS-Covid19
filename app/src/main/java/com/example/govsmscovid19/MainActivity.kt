@@ -21,7 +21,6 @@ import java.io.InputStreamReader
 
 class MainActivity : AppCompatActivity() {
 
-    private var numberToSend: String = "13033"
     private var textToSend: String = ""
     private val SMS_REQUEST_CODE = 101
     private var interval: Long = 5000
@@ -74,7 +73,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadData() {
         try {
-            val file = File(getExternalFilesDir(null).absolutePath, "GovSMSCovid19data.txt")
+            val file = File(getExternalFilesDir(null).absolutePath, FILENAME_COVID19)
             if (file.exists()) {
                 val fi = FileInputStream(file)
                 val br = BufferedReader(InputStreamReader(fi))
@@ -140,7 +139,7 @@ class MainActivity : AppCompatActivity() {
                         val option = findViewById<RadioButton>(id)
                         textToSend = option.text.substring(0, 1).plus(" ").plus(textToSend)
                         SmsManager.getDefault()
-                            .sendTextMessage(numberToSend, null, textToSend, null, null)
+                            .sendTextMessage(GOV_NUMBER_TO_SEND, null, textToSend, null, null)
                     } else {
                         val builder = AlertDialog.Builder(this)
                         builder.setMessage("Πρέπει να επιλέξετε πρώτα μία από τις επιλογές")

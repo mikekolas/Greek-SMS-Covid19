@@ -14,9 +14,6 @@ import java.io.*
 
 class SettingsActivity : AppCompatActivity() {
 
-    private var fileName: String = "GovSMSCovid19data.txt"
-    private var formaUri: String = "https://forma.gov.gr/"
-
     private var themeSwitch: Switch? = null
     private lateinit var sharedPref: SharedPref
 
@@ -50,10 +47,10 @@ class SettingsActivity : AppCompatActivity() {
                 val dialog: AlertDialog? = builder?.create()
                 dialog?.show()
             } else {
-                println(filesDir.resolve("GovSMSCovid19data.txt"))
+                println(filesDir.resolve(FILENAME_COVID19))
                 val fileContent = "${nameInput.text}:${addressInput.text}"
                 try {
-                    val file = File(getExternalFilesDir(null).absolutePath, "GovSMSCovid19data.txt")
+                    val file = File(getExternalFilesDir(null).absolutePath, FILENAME_COVID19)
                     val fo = FileOutputStream(file)
                     fo.write(fileContent.toByteArray())
                     fo.close()
@@ -84,7 +81,7 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun loadData() {
         try {
-            val file = File(getExternalFilesDir(null).absolutePath, "GovSMSCovid19data.txt")
+            val file = File(getExternalFilesDir(null).absolutePath, FILENAME_COVID19)
             val fi = FileInputStream(file)
             val br = BufferedReader(InputStreamReader(fi))
             val stringBuilder = StringBuilder()

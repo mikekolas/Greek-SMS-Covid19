@@ -10,8 +10,6 @@ import android.widget.Toast
 
 class SMSReceiver : BroadcastReceiver() {
 
-    private var govNumber: String = "13033"
-
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
         val extras = intent.extras
@@ -28,7 +26,7 @@ class SMSReceiver : BroadcastReceiver() {
                 val phoneNumber = smsMessage.originatingAddress
                 val messageText = smsMessage.messageBody.toString()
 
-                if (phoneNumber == govNumber) {
+                if (phoneNumber == GOV_NUMBER_TO_SEND) {
                     Toast.makeText(
                         context,
                         "phoneNumber: $phoneNumber\nmessageText: $messageText",
