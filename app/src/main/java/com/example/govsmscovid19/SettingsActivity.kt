@@ -18,7 +18,7 @@ import java.lang.StringBuilder
 
 class SettingsActivity : AppCompatActivity() {
 
-    private var fileName: String =  "GovSMSCovid19data.txt"
+    private var fileName: String = "GovSMSCovid19data.txt"
     private var formaUri: String = "https://forma.gov.gr/"
 
     private var themeSwitch: Switch? = null
@@ -51,10 +51,9 @@ class SettingsActivity : AppCompatActivity() {
                     ?.setNegativeButton("Κλείσιμο") { _, _ ->
                         // User cancelled
                     }
-                val dialog: AlertDialog? =builder?.create()
+                val dialog: AlertDialog? = builder?.create()
                 dialog?.show()
-            }
-            else {
+            } else {
                 println(filesDir.resolve("GovSMSCovid19data.txt"))
                 val fileContent = "${nameInput.text}:${addressInput.text}"
                 try {
@@ -63,7 +62,7 @@ class SettingsActivity : AppCompatActivity() {
                     fo.write(fileContent.toByteArray())
                     fo.close()
                     returnBack()
-                } catch (ex:Exception) {
+                } catch (ex: Exception) {
                     println(ex.message)
                 }
             }
@@ -75,7 +74,7 @@ class SettingsActivity : AppCompatActivity() {
         themeSwitch!!.setOnCheckedChangeListener { buttonView, isChecked ->
             disableSwitch()
             if (isChecked) {
-               sharedPref.setNightModeState(true)
+                sharedPref.setNightModeState(true)
                 restartApp()
             } else {
                 sharedPref.setNightModeState(false)
@@ -101,7 +100,7 @@ class SettingsActivity : AppCompatActivity() {
             nameInput.setText(str[0])
             addressInput.setText(str[1])
             fi.close()
-        }  catch (ex:Exception) {
+        } catch (ex: Exception) {
             ex.printStackTrace()
         }
     }
@@ -118,6 +117,7 @@ class SettingsActivity : AppCompatActivity() {
         finish()
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
+
     private fun disableSwitch() {
         themeSwitch?.isClickable = false
     }

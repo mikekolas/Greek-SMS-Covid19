@@ -16,7 +16,7 @@ class SharedPref(context: Context) {
         sharedPref = context.getSharedPreferences("filename", Context.MODE_PRIVATE)
     }
 
-    fun setNightModeState(state:Boolean?) {
+    fun setNightModeState(state: Boolean?) {
         val editor = sharedPref.edit()
         editor.putBoolean("Night Mode", state!!)
         editor.apply()

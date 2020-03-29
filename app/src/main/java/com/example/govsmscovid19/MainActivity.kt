@@ -58,16 +58,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
-           R.id.infoButton -> {
-               val intent = Intent(this, InfoActivity::class.java)
-               startActivity(intent)
-               return true
-           }
-           R.id.settingsButton -> {
-               val intent = Intent(this, SettingsActivity::class.java)
-               startActivity(intent)
-               return true
-           }
+            R.id.infoButton -> {
+                val intent = Intent(this, InfoActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            R.id.settingsButton -> {
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
             }
-        }  catch (ex: Exception) {
+        } catch (ex: Exception) {
             ex.printStackTrace()
         }
     }
@@ -110,8 +110,7 @@ class MainActivity : AppCompatActivity() {
         if (flag) requestPermission(permissions)
         for (permission in permissions) {
             val per = ContextCompat.checkSelfPermission(this, permission)
-            if (per != PackageManager.PERMISSION_GRANTED)
-            {
+            if (per != PackageManager.PERMISSION_GRANTED) {
                 Log.i("DENIED", "Permission denied on $permission")
                 println(ActivityCompat.shouldShowRequestPermissionRationale(this, permission))
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
@@ -119,13 +118,12 @@ class MainActivity : AppCompatActivity() {
                     if (permission == permissions[0]) {
                         builder.setMessage("Xρειάζεται εξουσιοδότηση αποστολής SMS η εφαρμογή για την λειτουργία της.")
                             .setTitle("Εξουσιοδότηση SMS")
-                    } else if(permission == permissions[1]) {
+                    } else if (permission == permissions[1]) {
                         builder.setMessage("Xρειάζεται εξουσιοδότηση λήψης SMS η εφαρμογή για την λειτουργία της.")
                             .setTitle("Εξουσιοδότηση SMS")
                     }
 
-                    builder.setPositiveButton("Ok") {
-                            _, _ ->
+                    builder.setPositiveButton("Ok") { _, _ ->
                     }
                     val dialog = builder.create()
                     dialog.show()
