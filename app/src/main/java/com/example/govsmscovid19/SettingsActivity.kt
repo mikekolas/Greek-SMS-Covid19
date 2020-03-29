@@ -1,19 +1,15 @@
 package com.example.govsmscovid19
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.view.View
+import android.widget.Button
+import android.widget.Switch
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.settings_activity.*
-import android.content.Intent
-import android.net.Uri
-import android.os.Handler
-import android.view.View
-import android.widget.*
-import androidx.appcompat.app.AppCompatDelegate
-import kotlinx.android.synthetic.main.activity_info.*
 import java.io.*
-import java.lang.Exception
-import java.lang.StringBuilder
 
 
 class SettingsActivity : AppCompatActivity() {
