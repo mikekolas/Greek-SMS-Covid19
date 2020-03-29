@@ -31,7 +31,7 @@ class SMSReceiver : BroadcastReceiver() {
                 if (phoneNumber == govNumber) {
                     Toast.makeText(
                         context,
-                        "phoneNumber: $phoneNumber\n" + "messageText: $messageText",
+                        "phoneNumber: $phoneNumber\nmessageText: $messageText",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

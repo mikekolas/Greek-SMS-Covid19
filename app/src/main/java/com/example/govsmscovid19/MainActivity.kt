@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         android.Manifest.permission.SEND_SMS,
         android.Manifest.permission.RECEIVE_SMS
     )
-    internal lateinit var sharedPref: SharedPref
+    private lateinit var sharedPref: SharedPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
         sharedPref = SharedPref(this)

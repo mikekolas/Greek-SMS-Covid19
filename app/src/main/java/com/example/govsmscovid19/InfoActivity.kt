@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_info.*
 
 class InfoActivity : AppCompatActivity() {
 
-    internal lateinit var sharedPref: SharedPref
+    private lateinit var sharedPref: SharedPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
         sharedPref = SharedPref(this)

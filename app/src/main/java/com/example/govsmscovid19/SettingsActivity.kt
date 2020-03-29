@@ -18,7 +18,7 @@ class SettingsActivity : AppCompatActivity() {
     private var formaUri: String = "https://forma.gov.gr/"
 
     private var themeSwitch: Switch? = null
-    internal lateinit var sharedPref: SharedPref
+    private lateinit var sharedPref: SharedPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
         sharedPref = SharedPref(this)
@@ -67,7 +67,7 @@ class SettingsActivity : AppCompatActivity() {
         if (sharedPref.loadNightModeState() == true) {
             themeSwitch!!.isChecked = true
         }
-        themeSwitch!!.setOnCheckedChangeListener { buttonView, isChecked ->
+        themeSwitch!!.setOnCheckedChangeListener { _, isChecked ->
             disableSwitch()
             if (isChecked) {
                 sharedPref.setNightModeState(true)
