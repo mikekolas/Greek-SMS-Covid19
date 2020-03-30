@@ -21,7 +21,6 @@ import java.io.InputStreamReader
 
 class MainActivity : AppCompatActivity() {
 
-    private var numberToSend: String = "13033"
     private var textToSend: String = ""
     private val SMS_REQUEST_CODE = 101
     private var interval: Long = 5000
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         android.Manifest.permission.SEND_SMS,
         android.Manifest.permission.RECEIVE_SMS
     )
-    internal lateinit var sharedPref: SharedPref
+    private lateinit var sharedPref: SharedPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
         sharedPref = SharedPref(this)
@@ -58,23 +57,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
-           R.id.infoButton -> {
-               val intent = Intent(this, InfoActivity::class.java)
-               startActivity(intent)
-               return true
-           }
-           R.id.settingsButton -> {
-               val intent = Intent(this, SettingsActivity::class.java)
-               startActivity(intent)
-               return true
-           }
+            R.id.infoButton -> {
+                val intent = Intent(this, InfoActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            R.id.settingsButton -> {
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
 
     private fun loadData() {
         try {
-            val file = File(getExternalFilesDir(null).absolutePath, "GovSMSCovid19data.txt")
+            val file = File(getExternalFilesDir(null).absolutePath, FILENAME_COVID19)
             if (file.exists()) {
                 val fi = FileInputStream(file)
                 val br = BufferedReader(InputStreamReader(fi))
@@ -92,7 +91,7 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
             }
-        }  catch (ex: Exception) {
+        } catch (ex: Exception) {
             ex.printStackTrace()
         }
     }
@@ -110,22 +109,20 @@ class MainActivity : AppCompatActivity() {
         if (flag) requestPermission(permissions)
         for (permission in permissions) {
             val per = ContextCompat.checkSelfPermission(this, permission)
-            if (per != PackageManager.PERMISSION_GRANTED)
-            {
+            if (per != PackageManager.PERMISSION_GRANTED) {
                 Log.i("DENIED", "Permission denied on $permission")
                 println(ActivityCompat.shouldShowRequestPermissionRationale(this, permission))
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
                     val builder = AlertDialog.Builder(this)
                     if (permission == permissions[0]) {
-                        builder.setMessage("Xρειάζεται εξουσιοδότηση αποστολής SMS η εφαρμογή για την λειτουργία της.")
-                            .setTitle("Εξουσιοδότηση SMS")
-                    } else if(permission == permissions[1]) {
-                        builder.setMessage("Xρειάζεται εξουσιοδότηση λήψης SMS η εφαρμογή για την λειτουργία της.")
-                            .setTitle("Εξουσιοδότηση SMS")
+                        builder.setMessage(getString(R.string.permissionTitle, "αποστολής"))
+                               .setTitle(getString(R.string.permissionTitle))
+                    } else if (permission == permissions[1]) {
+                        builder.setMessage(getString(R.string.permissionTitle, "λήψης"))
+                               .setTitle(getString(R.string.permissionTitle))
                     }
 
-                    builder.setPositiveButton("Ok") {
-                            _, _ ->
+                    builder.setPositiveButton(getString(R.string.btnOK)) { _, _ ->
                     }
                     val dialog = builder.create()
                     dialog.show()
@@ -142,12 +139,12 @@ class MainActivity : AppCompatActivity() {
                         val option = findViewById<RadioButton>(id)
                         textToSend = option.text.substring(0, 1).plus(" ").plus(textToSend)
                         SmsManager.getDefault()
-                            .sendTextMessage(numberToSend, null, textToSend, null, null)
+                            .sendTextMessage(GOV_NUMBER_TO_SEND, null, textToSend, null, null)
                     } else {
                         val builder = AlertDialog.Builder(this)
-                        builder.setMessage("Πρέπει να επιλέξετε πρώτα μία από τις επιλογές")
-                            .setTitle("Επιλογή μετακίνησης")
-                        builder.setPositiveButton("Ok") { _, _ -> }
+                        builder.setMessage(getString(R.string.noOptionSelectedMessage))
+                               .setTitle(getString(R.string.noOptionSelectedTitle))
+                        builder.setPositiveButton(getString(R.string.btnOK)) { _, _ -> }
                         val dialog = builder.create()
                         dialog.show()
                     }

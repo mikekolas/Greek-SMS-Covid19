@@ -1,28 +1,21 @@
 package com.example.govsmscovid19
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.view.View
+import android.widget.Button
+import android.widget.Switch
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.settings_activity.*
-import android.content.Intent
-import android.net.Uri
-import android.os.Handler
-import android.view.View
-import android.widget.*
-import androidx.appcompat.app.AppCompatDelegate
-import kotlinx.android.synthetic.main.activity_info.*
 import java.io.*
-import java.lang.Exception
-import java.lang.StringBuilder
 
 
 class SettingsActivity : AppCompatActivity() {
 
-    private var fileName: String =  "GovSMSCovid19data.txt"
-    private var formaUri: String = "https://forma.gov.gr/"
-
     private var themeSwitch: Switch? = null
-    internal lateinit var sharedPref: SharedPref
+    private lateinit var sharedPref: SharedPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
         sharedPref = SharedPref(this)
@@ -47,23 +40,22 @@ class SettingsActivity : AppCompatActivity() {
                 val builder: AlertDialog.Builder? = this@SettingsActivity.let {
                     AlertDialog.Builder(it)
                 }
-                builder?.setMessage("Ξεχάσατε να βάλετε τα στοιχεία σας")
-                    ?.setNegativeButton("Κλείσιμο") { _, _ ->
-                        // User cancelled
-                    }
-                val dialog: AlertDialog? =builder?.create()
+                builder?.setMessage(getString(R.string.missingSettings))
+                       ?.setNegativeButton(getString(R.string.btnClose)) { _, _ ->
+                           // User cancelled
+                       }
+                val dialog: AlertDialog? = builder?.create()
                 dialog?.show()
-            }
-            else {
-                println(filesDir.resolve("GovSMSCovid19data.txt"))
+            } else {
+                println(filesDir.resolve(FILENAME_COVID19))
                 val fileContent = "${nameInput.text}:${addressInput.text}"
                 try {
-                    val file = File(getExternalFilesDir(null).absolutePath, "GovSMSCovid19data.txt")
+                    val file = File(getExternalFilesDir(null).absolutePath, FILENAME_COVID19)
                     val fo = FileOutputStream(file)
                     fo.write(fileContent.toByteArray())
                     fo.close()
                     returnBack()
-                } catch (ex:Exception) {
+                } catch (ex: Exception) {
                     println(ex.message)
                 }
             }
@@ -72,10 +64,10 @@ class SettingsActivity : AppCompatActivity() {
         if (sharedPref.loadNightModeState() == true) {
             themeSwitch!!.isChecked = true
         }
-        themeSwitch!!.setOnCheckedChangeListener { buttonView, isChecked ->
+        themeSwitch!!.setOnCheckedChangeListener { _, isChecked ->
             disableSwitch()
             if (isChecked) {
-               sharedPref.setNightModeState(true)
+                sharedPref.setNightModeState(true)
                 restartApp()
             } else {
                 sharedPref.setNightModeState(false)
@@ -89,7 +81,7 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun loadData() {
         try {
-            val file = File(getExternalFilesDir(null).absolutePath, "GovSMSCovid19data.txt")
+            val file = File(getExternalFilesDir(null).absolutePath, FILENAME_COVID19)
             val fi = FileInputStream(file)
             val br = BufferedReader(InputStreamReader(fi))
             val stringBuilder = StringBuilder()
@@ -101,7 +93,7 @@ class SettingsActivity : AppCompatActivity() {
             nameInput.setText(str[0])
             addressInput.setText(str[1])
             fi.close()
-        }  catch (ex:Exception) {
+        } catch (ex: Exception) {
             ex.printStackTrace()
         }
     }
@@ -118,6 +110,7 @@ class SettingsActivity : AppCompatActivity() {
         finish()
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
+
     private fun disableSwitch() {
         themeSwitch?.isClickable = false
     }

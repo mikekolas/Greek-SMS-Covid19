@@ -1,6 +1,5 @@
 package com.example.govsmscovid19
 
-import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -10,8 +9,6 @@ import android.widget.Toast
 
 
 class SMSReceiver : BroadcastReceiver() {
-
-    private var govNumber: String = "13033"
 
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
@@ -29,14 +26,13 @@ class SMSReceiver : BroadcastReceiver() {
                 val phoneNumber = smsMessage.originatingAddress
                 val messageText = smsMessage.messageBody.toString()
 
-                if (phoneNumber == govNumber) {
+                if (phoneNumber == GOV_NUMBER_TO_SEND) {
                     Toast.makeText(
                         context,
-                        "phoneNumber: $phoneNumber\n" + "messageText: $messageText",
+                        "Τηλέφωνο: $phoneNumber\nΜήνυμα: $messageText",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
             }
         }
     }

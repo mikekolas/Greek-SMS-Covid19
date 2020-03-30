@@ -10,13 +10,9 @@ import android.content.SharedPreferences
 
 class SharedPref(context: Context) {
 
-    internal var sharedPref: SharedPreferences
+    private var sharedPref: SharedPreferences = context.getSharedPreferences("filename", Context.MODE_PRIVATE)
 
-    init {
-        sharedPref = context.getSharedPreferences("filename", Context.MODE_PRIVATE)
-    }
-
-    fun setNightModeState(state:Boolean?) {
+    fun setNightModeState(state: Boolean?) {
         val editor = sharedPref.edit()
         editor.putBoolean("Night Mode", state!!)
         editor.apply()
